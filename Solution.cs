@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace mylc
 {
+    // Definition for singly-linked list.
+    public class ListNode
+    {
+        public int val;
+        public ListNode next;
+        public ListNode(int x) { val = x; }
+    }
+
     public class Solution
     {
         public static double FindMedianSortedArrays(int[] nums1, int[] nums2)
@@ -26,7 +34,7 @@ namespace mylc
 
             if (len1 == 1) // single
             {
-                
+
             }
 
             // normal case
@@ -65,14 +73,13 @@ namespace mylc
             }
         }
 
-
         public static int[] TwoSum(int[] nums, int target)
         {
             Dictionary<int, int> map = new Dictionary<int, int>();
 
             for (int i = 0; i < nums.Length; i++)
             {
-                if(map.ContainsKey(target - nums[i]))
+                if (map.ContainsKey(target - nums[i]))
                 {
                     return new int[] { map[target - nums[i]], i };
                 }
@@ -81,7 +88,6 @@ namespace mylc
 
             return null;
         }
-
 
         public static int LengthOfLongestSubstring(string s)
         {
@@ -117,18 +123,18 @@ namespace mylc
             int max = (int)Math.Pow(10, n) - 1;
             int min = (int)Math.Pow(10, (n - 1));
 
-            for(int val = max; val > min; val--)
+            for (int val = max; val > min; val--)
             {
                 char[] charArray = val.ToString().ToCharArray();
                 Array.Reverse(charArray);
                 long prod = val * (int)Math.Pow(10, n) + int.Parse(new string(charArray));
 
-                for(int factor=max; factor >min; factor--)
+                for (int factor = max; factor > min; factor--)
                 {
-                    if(prod % factor == 0 ) // found
+                    if (prod % factor == 0) // found
                     {
                         int rem = (int)prod / factor;
-                        if( rem < max && rem > min)
+                        if (rem < max && rem > min)
                             return (int)(prod % 1337);
                     }
                 }
@@ -137,5 +143,67 @@ namespace mylc
             return 0;
 
         }
+
+        public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+        {
+            ListNode l = l1;
+            ListNode r = l2;
+            ListNode ret = null;
+
+            //edge case
+            if (l1 == null)
+            {
+                return l2;
+            }
+            else if (l2 == null)
+            {
+                return l1;
+            }
+
+            // normal case
+            int ten = 0;
+
+            ListNode node = null;
+
+            do
+            {
+                int lv = (l == null ? 0 : l.val);
+                int rv = (r == null ? 0 : r.val);
+                int n = lv + rv + ten;
+                ten = n / 10;
+
+                ListNode nd = new ListNode(n % 10);
+                if (node == null) //head
+                {
+                    node = nd;
+                    ret = nd;
+                }
+                else // normal node
+                {
+                    node.next = nd;
+                }
+
+                if (l != null)
+                {
+                    l = l.next;
+                }
+
+                if (r != null)
+                {
+                    r = r.next;
+                }
+                node = nd;
+            }
+            while (l != null || r != null);
+
+            if(ten == 1)
+            {
+                node.next = new ListNode(ten);
+            }
+
+            return ret;
+
+        }
+
     }
 }
