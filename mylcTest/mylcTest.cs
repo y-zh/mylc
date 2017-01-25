@@ -33,6 +33,15 @@ namespace mylcTest
 
             //Assert.AreEqual(Solution.FindMedianSortedArrays(a, b), 4.0);
         }
+
+        [TestMethod]
+        public void TestEmpty()
+        {
+            //int[] a = { 1 };
+            //int[] b = { 4, 7, 14, 19 };
+
+            //Assert.AreEqual(Solution.FindMedianSortedArrays(a, b), 4.0);
+        }
     }
 
     [TestClass]
@@ -82,6 +91,28 @@ namespace mylcTest
         public void Test2()
         {
             Assert.AreEqual(Solution.LargestPalindrome(8), 475);
+        }
+    }
+
+    [TestClass]
+    public class PoorPigsTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            Assert.AreEqual(Solution.PoorPigs(1000, 15, 60), 5);
+        }
+
+        [TestMethod]
+        public void Test2()
+        {
+            Assert.AreEqual(Solution.PoorPigs(1000, 15, 61), 5);
+        }
+
+        [TestMethod]
+        public void Test3()
+        {
+            Assert.AreEqual(Solution.PoorPigs(1000, 15, 69), 5);
         }
     }
 
@@ -156,6 +187,30 @@ namespace mylcTest
             Assert.AreEqual(ret.next.val, 2);
             Assert.AreEqual(ret.next.next.val, 3);
             Assert.AreEqual(ret.next.next.next.val, 1);
+        }
+    }
+
+
+    [TestClass]
+    public class LongestPalindromeTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            Assert.AreEqual("bab", Solution.LongestPalindrome("babad"));
+        }
+
+        [TestMethod]
+        public void Test2()
+        {
+            Assert.AreEqual("bb", Solution.LongestPalindrome("cbbd"));
+        }
+
+
+        [TestMethod]
+        public void Test3()
+        {
+            Assert.AreEqual("abcddcba", Solution.LongestPalindrome("abcddcba"));
         }
     }
 }

@@ -205,5 +205,84 @@ namespace mylc
 
         }
 
+        public static int PoorPigs(int buckets, int minutesToDie, int minutesToTest)
+        {
+            int n = minutesToTest / minutesToDie + 1;
+
+            return (int)Math.Ceiling(Math.Log(buckets, n));
+        }
+
+        public static bool CircularArrayLoop(int[] nums)
+        {
+            return true;
+        }
+
+        public static bool CanJump(int[] nums)
+        {
+            int last = nums.Length - 1;
+            for(int i=nums.Length-1; i>=0; i--)
+            {
+                if(nums[i] + i >= last )
+                {
+                    last = i;
+                }
+            }
+            return last == 0;
+        }
+
+        public static string LongestPalindrome(string s)
+        {
+            int len = s.Length;
+
+            //edge case
+            if (len == 0) return null;
+            if (len == 1) return s;
+
+            //normal case
+            string ret = "";
+            for (int i=1; i<len -1; i++)
+            {
+                string palindrome;
+
+                // TODO: use StringBuilder to optimize
+                // TODO: consider letting i jump j since j chars after pos i have been checked already.  
+
+                // AA
+                if( s[i] == s[i+1])
+                {
+                    palindrome = new string(s[i], 2);
+
+                    int j = 1;
+                    while ( i-j>=0 && i+1+j<len)
+                    {
+                        if(s[i-j] == s[i+1+j])
+                        {
+                            palindrome = s[i - j].ToString() + palindrome + s[i + 1 + j].ToString();  
+                        }
+                        j++;
+                    }
+
+                    if (palindrome.Length > ret.Length) ret = palindrome;
+                }
+
+                // ABA
+                if(s[i-1] == s[i+1])
+                {
+                    palindrome = new StringBuilder().Append(s[i - 1]).Append(s[i]).Append(s[i + 1]).ToString();
+                    int j = 2;
+                    while (i - j >= 0 && i+j < len)
+                    {
+                        if(s[i-j] == s[i+j])
+                        {
+                            palindrome = new StringBuilder(palindrome).Insert(0, s[i - j]).Append(s[i + j]).ToString();
+                        }
+                        j++;
+                    }
+                    if (palindrome.Length > ret.Length) ret = palindrome;
+                }
+            }
+
+            return ret;
+        }
     }
 }
