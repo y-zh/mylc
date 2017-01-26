@@ -284,5 +284,39 @@ namespace mylc
 
             return ret;
         }
+
+        public static int MinMutation(string start, string end, string[] bank)
+        {
+            return 0;
+        }
+
+        public static string Convert(string s, int numRows)
+        {
+            int len = s.Length;
+
+            //edge case
+            if (len == 0) return "";
+            if (numRows <= 1) return s;
+            
+            // main case
+            StringBuilder ret = new StringBuilder(len);
+
+            int rows = numRows - 1;
+            int cols = len / rows;
+            if (len % rows > 0) cols++;
+
+            char[,] arr = new char[rows,cols];
+            for(int i=0;i< rows;i++)
+            {
+                for(int j=0; j<cols; j++)
+                {
+                    arr[i, j] = '';                    
+                }
+            }
+
+
+
+            return ret.ToString();
+        }
     }
 }
