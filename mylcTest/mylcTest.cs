@@ -213,4 +213,14 @@ namespace mylcTest
             Assert.AreEqual("abcddcba", Solution.LongestPalindrome("abcddcba"));
         }
     }
+
+    [TestClass]
+    public class ConvertTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            Assert.AreEqual("PAHNAPLSIIGYIR", Solution.Convert("PAYPALISHIRING", 3));
+        }
+    }
 }

@@ -305,16 +305,21 @@ namespace mylc
             int cols = len / rows;
             if (len % rows > 0) cols++;
 
-            char[,] arr = new char[rows,cols];
-            for(int i=0;i< rows;i++)
+            for(int i=0;i<=rows;i++)
             {
                 for(int j=0; j<cols; j++)
                 {
-                    arr[i, j] = '';                    
+                    if (i < rows && j % 2 == 0 && j * rows + i < len)
+                    {
+                        ret.Append(s[j * rows + i]);
+                    }
+                    else if (i > 0 && j % 2 == 1 && (j + 1) * rows - i < len)
+                    {
+                        ret.Append(s[(j + 1) * rows - i]);
+                    }
                 }
             }
-
-
+            
 
             return ret.ToString();
         }
