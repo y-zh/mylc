@@ -223,4 +223,46 @@ namespace mylcTest
             Assert.AreEqual("PAHNAPLSIIGYIR", Solution.Convert("PAYPALISHIRING", 3));
         }
     }
+
+    [TestClass]
+    public class LetterCombinationsTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            
+        }
+    }
+
+    [TestClass]
+    public class ParenthesesIsValidTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            Assert.AreEqual(true, Solution.ParenthesesIsValid("(abce[w]{}wwwwwa{(((abc)))abce})"));
+            Assert.AreEqual(true, Solution.ParenthesesIsValid("(asdfa)"));
+            Assert.AreEqual(true, Solution.ParenthesesIsValid(""));
+            Assert.AreEqual(false, Solution.ParenthesesIsValid(")"));
+            Assert.AreEqual(true, Solution.ParenthesesIsValid("{{{{{{{{{{}}}}}}}}}}"));
+            Assert.AreEqual(false, Solution.ParenthesesIsValid("{}{}[(])"));
+        }
+    }
+
+    [TestClass]
+    public class GenerateParenthesisTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            System.Collections.Generic.IList<string> strs = Solution.GenerateParenthesis(3);
+
+            Assert.AreEqual(5, strs.Count);
+            Assert.AreEqual(true, strs.Contains("((()))"));
+            Assert.AreEqual(true, strs.Contains("(()())"));
+            Assert.AreEqual(true, strs.Contains("(())()"));
+            Assert.AreEqual(true, strs.Contains("()(())"));
+            Assert.AreEqual(true, strs.Contains("()()()"));
+        }
+    }
 }
