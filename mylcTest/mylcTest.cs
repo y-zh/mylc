@@ -212,6 +212,13 @@ namespace mylcTest
         {
             Assert.AreEqual("abcddcba", Solution.LongestPalindrome("abcddcba"));
         }
+
+        [TestMethod]
+        public void Test4()
+        {
+            Assert.AreEqual("aaaaaaaaaaaaaaaaaa", Solution.LongestPalindrome("aaaaaaaaaaaaaaaaaabcaaaaaaaaaaaaaaaaa"));
+        }
+        
     }
 
     [TestClass]
@@ -263,6 +270,138 @@ namespace mylcTest
             Assert.AreEqual(true, strs.Contains("(())()"));
             Assert.AreEqual(true, strs.Contains("()(())"));
             Assert.AreEqual(true, strs.Contains("()()()"));
+        }
+    }
+
+    [TestClass]
+    public class MergeKListsTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            ListNode n1 = new ListNode(2);
+            ListNode n2 = new ListNode(6);
+            ListNode n3 = new ListNode(12);
+            n1.next = n2;
+            n2.next = n3;
+            n3.next = null;
+
+            ListNode m1 = new ListNode(3);
+            ListNode m2 = new ListNode(8);
+            ListNode m3 = new ListNode(11);
+            m1.next = m2;
+            m2.next = m3;
+            m3.next = null;
+
+            ListNode ret = Solution.MergeTwoLists(n1, m1);
+
+            Assert.AreEqual(2, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(3, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(6, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(8, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(11, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(12, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(null, ret);
+        }
+
+        [TestMethod]
+        public void Test2()
+        {
+            ListNode n1 = new ListNode(2);
+            ListNode n2 = new ListNode(6);
+            ListNode n3 = new ListNode(12);
+            n1.next = n2;
+            n2.next = n3;
+            n3.next = null;
+
+            ListNode m1 = new ListNode(3);
+            ListNode m2 = new ListNode(8);
+            ListNode m3 = new ListNode(11);
+            m1.next = m2;
+            m2.next = m3;
+            m3.next = null;
+
+            ListNode p1 = new ListNode(4);
+            ListNode p2 = new ListNode(5);
+            ListNode p3 = new ListNode(7);
+            p1.next = p2;
+            p2.next = p3;
+            p3.next = null;
+
+            ListNode q1 = new ListNode(13);
+            ListNode q2 = new ListNode(16);
+            ListNode q3 = new ListNode(17);
+            q1.next = q2;
+            q2.next = q3;
+            q3.next = null;
+
+            ListNode r1 = new ListNode(1);
+            ListNode r2 = new ListNode(20);
+            ListNode r3 = new ListNode(21);
+            r1.next = r2;
+            r2.next = r3;
+            r3.next = null;
+
+            ListNode[] lists = new ListNode[5];
+            lists[0] = n1;
+            lists[1] = m1;
+            lists[2] = p1;
+            lists[3] = q1;
+            lists[4] = r1;
+            ListNode ret = Solution.MergeKLists(lists);
+
+            Assert.AreEqual(1, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(2, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(3, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(4, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(5, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(6, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(7, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(8, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(11, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(12, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(13, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(16, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(17, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(20, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(21, ret.val);
+            ret = ret.next;
+            Assert.AreEqual(null, ret);
+        }
+    }
+
+    [TestClass]
+    public class TotalNQueensTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            Assert.AreEqual(1, Solution.TotalNQueens(1));
+            Assert.AreEqual(92, Solution.TotalNQueens(8));
+            Assert.AreEqual(724, Solution.TotalNQueens(10));
+            Assert.AreEqual(14200, Solution.TotalNQueens(12));
+            Assert.AreEqual(73712, Solution.TotalNQueens(13));
+            Assert.AreEqual(365596, Solution.TotalNQueens(14));
         }
     }
 }

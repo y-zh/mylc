@@ -487,7 +487,7 @@ namespace mylc
 
             return ret;
         }
-        
+
         public static ListNode MergeTwoLists(ListNode l1, ListNode l2)
         {
             if (l1 == null)
@@ -526,6 +526,106 @@ namespace mylc
 
             return ret;
         }
+
+        public static int HammingDistance(int x, int y)
+        {
+            return 0;
+        }
+
+        private static int TotalNQueensByRow(int row, int n, ref int count, ref List<int> usedCols, ref List<int> usedDiag1, ref List<int> usedDiag2)
+        {
+            for (int col = 0; col < n; col++)
+            {
+                if (usedCols.Contains(col))
+                {
+                    continue;
+                }
+
+                int diag1 = row - col;
+                if (usedDiag1.Contains(diag1))
+                {
+                    continue;
+                }
+
+                int diag2 = row + col;
+                if (usedDiag2.Contains(diag2))
+                {
+                    continue;
+
+                }
+
+                if (row == n - 1)
+                {
+                    count++;
+                }
+                else
+                {
+                    usedCols.Add(col);
+                    usedDiag1.Add(diag1);
+                    usedDiag2.Add(diag2);
+
+                    count = TotalNQueensByRow(row + 1, n, ref count, ref usedCols, ref usedDiag1, ref usedDiag2);
+
+                    usedCols.Remove(col);
+                    usedDiag1.Remove(diag1);
+                    usedDiag2.Remove(diag2);
+                }
+            }
+
+
+            return count;
+        }
+
+        public static int TotalNQueens(int n)
+        {
+            List<int> usedCols = new List<int>();
+            List<int> usedDiag1 = new List<int>();
+            List<int> usedDiag2 = new List<int>();
+
+            int count = 0;
+
+            return TotalNQueensByRow(0, n, ref count, ref usedCols, ref usedDiag1, ref usedDiag2);
+        }
+
+        public static int[] FindDup(int[] nums, int N)
+        {
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (nums[i] == i + 1)
+                {
+                    continue;
+                }
+                else
+                {
+                    int t = nums[nums[i] - 1];
+                    nums[nums[i] - 1] = nums[i];
+                    nums[i] = t;
+                }
+            }
+
+            int[] ret = new int[nums.Length - N];
+            for (int i = N; N < nums.Length; i++)
+            {
+                ret[i - N] = nums[i];
+            }
+
+            return ret;
+        }
+
+        public static string LicenseKeyFormatting(string S, int K)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            for(int i=S.Length-1; i>=0;i++)
+            {
+
+            }
+
+            return sb.ToString();
+        }
+
+        
+
     }
 }
 
