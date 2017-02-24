@@ -88,7 +88,7 @@ namespace mylc
             return null;
         }
 
-        public static int LengthOfLongestSubstring(string s)
+        public static int LengthOfLongestSubstringA(string s)
         {
             int len = 0;
             string str = "";
@@ -110,6 +110,38 @@ namespace mylc
             }
 
             return len;
+        }
+
+        public static int LengthOfLongestSubString(string s)
+        {
+            int len = s.Length;
+            int[] map = new int[256];
+            for (int i = 0; i < 256; i++)
+                map[i] = -1;
+
+            int maxlen = 0;
+            int pos = -1;
+            for (int i=0; i< len; i++)
+            {
+                if(map[s[i]] > pos )
+                {
+                    pos = map[s[i]];
+                    maxlen = maxlen < (i - map[s[i]]) ? maxlen : map[s[i]];
+                    map[s[i]] = i;
+                }
+            }
+
+            int maxLen = 0, start = -1;
+            for (int i = 0; i != s.length(); i++)
+            {
+                if (dict[s[i]] > start)
+                    start = dict[s[i]];
+                dict[s[i]] = i;
+                maxLen = max(maxLen, i - start);
+            }
+            return maxLen;
+
+            return maxlen;
         }
 
         public static int LargestPalindrome(int n)
@@ -624,8 +656,58 @@ namespace mylc
             return sb.ToString();
         }
 
-        
+        private static int MinNumAfterRemoveOneDigit(int num)
+        {
+            string str = num.ToString();
+            int len = str.Length;
 
+            if (len <= 1) return 0;
+
+            int i = 0;
+            while (str[i] < str[i + 1]) i++;
+
+            return int.Parse(str.Remove(i, 1));
+        }
+
+        public static int MinNumAfterRemoveKDigits(int num, int k)
+        {
+            int n = num;
+            while (k > 0)
+            {
+                n = MinNumAfterRemoveOneDigit(n);
+                k--;
+            }
+
+            return n;
+        }
+
+        public static ListNode MergeTwoSortedListA(ListNode list1, ListNode list2)
+        {
+            if(list1 == null)
+            {
+                return list2;
+            }
+
+            if(list2 == null)
+            {
+                return list1;
+            }
+
+            ListNode list = new ListNode(0);
+            if(list1.val <= list2.val)
+            {
+                list.val = list1.val;
+                list.next = MergeTwoSortedListA(list1.next, list2);
+            }
+            else
+            {
+                list.val = list2.val;
+                list.next = MergeTwoSortedListA(list1, list2.next);
+            }
+
+            return list;
+        }
+        
     }
 }
 

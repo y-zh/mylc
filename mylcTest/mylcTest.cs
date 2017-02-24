@@ -13,7 +13,7 @@ namespace mylcTest
             int[] a = { 1, 2, 3, 5, 8, 10 };
             int[] b = { 4, 7, 14, 19 };
 
-            Assert.AreEqual(Solution.FindMedianSortedArrays(a, b), 6.0);          
+            Assert.AreEqual(6.0, Solution.FindMedianSortedArrays(a, b));          
         }
 
         [TestMethod]
@@ -402,6 +402,18 @@ namespace mylcTest
             Assert.AreEqual(14200, Solution.TotalNQueens(12));
             Assert.AreEqual(73712, Solution.TotalNQueens(13));
             Assert.AreEqual(365596, Solution.TotalNQueens(14));
+        }
+    }
+
+    [TestClass]
+    public class MinNumAfterRemoveKDigitsTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            Assert.AreEqual(1984, Solution.MinNumAfterRemoveKDigits(891984, 2));
+            Assert.AreEqual(129, Solution.MinNumAfterRemoveKDigits(61829, 2));
+            
         }
     }
 }
