@@ -126,20 +126,10 @@ namespace mylc
                 if(map[s[i]] > pos )
                 {
                     pos = map[s[i]];
-                    maxlen = maxlen < (i - map[s[i]]) ? maxlen : map[s[i]];
-                    map[s[i]] = i;
                 }
+                map[s[i]] = i;
+                maxlen = maxlen > (i - pos) ? maxlen : (i- pos);
             }
-
-            int maxLen = 0, start = -1;
-            for (int i = 0; i != s.length(); i++)
-            {
-                if (dict[s[i]] > start)
-                    start = dict[s[i]];
-                dict[s[i]] = i;
-                maxLen = max(maxLen, i - start);
-            }
-            return maxLen;
 
             return maxlen;
         }
