@@ -416,4 +416,14 @@ namespace mylcTest
             
         }
     }
+
+    [TestClass]
+    public class FindKthLargestTest
+    {
+        [TestMethod]
+        public void Test1()
+        {
+            Assert.AreEqual(5, Solution.FindKthLargest(new int[] { 3, 2, 1, 5, 6, 4 }, 2));
+        }
+    }
 }

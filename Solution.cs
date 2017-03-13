@@ -112,7 +112,7 @@ namespace mylc
             return len;
         }
 
-        public static int LengthOfLongestSubString(string s)
+        public static int LengthOfLongestSubstring(string s)
         {
             int len = s.Length;
             int[] map = new int[256];
@@ -697,7 +697,12 @@ namespace mylc
 
             return list;
         }
-        
+
+        public static int FindKthLargest(int[] nums, int k)
+        {
+            return 0;
+        }
+
     }
 }
 
